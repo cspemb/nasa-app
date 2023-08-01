@@ -1,5 +1,5 @@
 # About
-This project is just a demo project to practice and learn [React Sweet State](https://atlassian.github.io/react-sweet-state/#/). We used the free [Random User API](https://randomuser.me/) to get some data and manage it with RSS.
+This project is just a demo project to practice and learn [React Sweet State](https://atlassian.github.io/react-sweet-state/#/). 
 
 # Resources
 - [RSS Docs](https://atlassian.github.io/react-sweet-state/#/)
