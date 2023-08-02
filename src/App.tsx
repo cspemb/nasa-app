@@ -1,12 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import reactSweetStateLogo from './assets/react-sweet-state.png';
 import './App.css';
-import { Link } from '@mui/material';
+import { Button, Link } from '@mui/material';
+import axios from 'axios';
+
+interface TestResponse {
+	message: string;
+}
 
 function App() {
 	const [count, setCount] = useState(0);
+	const [testMessage, setTestMessage] = useState('');
+
+	const getTestMessage = () =>
+		axios.get<TestResponse>('/api/v1/hello').then((res) => {
+			console.log(res.data.message);
+			setTestMessage(res.data.message);
+		});
+
+	useEffect(() => {
+		getTestMessage();
+	}, []);
 
 	return (
 		<>
@@ -36,6 +52,8 @@ function App() {
 			<p className="read-the-docs">
 				Click on the any of the logos to learn more
 			</p>
+			<Button onClick={getTestMessage}>Test Request</Button>
+			<p>{testMessage}</p>
 		</>
 	);
 }
